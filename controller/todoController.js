@@ -26,6 +26,15 @@ const todoController = ({
          res.status(500).json({message:error.message})
       }
    },
+   getTodoById: async(req,res)=>{
+      try{
+         const todoId = req.params.id
+         const todo = await Todos.findById(todoId)
+         res.status(200).json({todo})
+      }catch(error){
+         res.status(500).json({message:error.message})
+      }
+   },
    updateTodos: async(req,res)=>{
       try{
          const todoId = req.params.id;
